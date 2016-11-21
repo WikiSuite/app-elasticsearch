@@ -1,0 +1,21 @@
+#!/bin/sh
+
+TIMESTAMP=`date "+%b-%d-%Y-%T"`
+
+# Set default configuration
+#--------------------------
+
+logger -p local6.notice -t installer "app-elasticsearch-core - securing default configuration"
+
+if [ -e /etc/elasticsearch/elasticsearch.yml ]; then
+    cp /etc/elasticsearch/elasticsearch.yml /var/clearos/elasticsearch/backup/elasticsearch.yml.$TIMESTAMP
+fi
+
+cp /usr/clearos/apps/elasticsearch/deploy/elasticsearch.yml /etc/elasticsearch/elasticsearch.yml
+
+# As suggested in elasticsearch RPM install output
+#-------------------------------------------------
+
+systemctl daemon-reload >/dev/null 2>&1
+systemctl enable elasticsearch.service >/dev/null 2>&1
+systemctl start elasticsearch.service >/dev/null 2>&1
