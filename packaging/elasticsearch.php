@@ -21,7 +21,7 @@ $configlet = array(
 	'title' => lang('elasticsearch_app_name'),
 	'package' => 'elasticsearch',
 	'process_name' => 'elasticsearch',
-	'pid_file' => '/var/run/elasticsearch.pid',
+	'pid_file' => '/var/run/elasticsearch/elasticsearch.pid',
 	'reloadable' => FALSE,
 	'url' => '/app/elasticsearch'
 );
