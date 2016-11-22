@@ -1,11 +1,11 @@
 <?php
 
 /**
- * Elasticsearch view.
+ * Elasticsearch daemon controller.
  *
  * @category   apps
  * @package    elasticsearch
- * @subpackage view
+ * @subpackage controllers
  * @author     eGloo <team@egloo.ca>
  * @copyright  2016 eGloo
  * @license    http://www.gnu.org/copyleft/gpl.html GNU General Public License version 3 or later
@@ -25,18 +25,43 @@
 // GNU General Public License for more details.
 //
 // You should have received a copy of the GNU General Public License
-// along with this program.  If not, see <http://www.gnu.org/licenses/>.  
-//  
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//
 ///////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////
-// Load dependencies
+// B O O T S T R A P
 ///////////////////////////////////////////////////////////////////////////////
 
-$this->lang->load('elasticsearch');
+$bootstrap = getenv('CLEAROS_BOOTSTRAP') ? getenv('CLEAROS_BOOTSTRAP') : '/usr/clearos/framework/shared';
+require_once $bootstrap . '/bootstrap.php';
 
 ///////////////////////////////////////////////////////////////////////////////
-// Form
+// D E P E N D E N C I E S
 ///////////////////////////////////////////////////////////////////////////////
 
-echo infobox_highlight(lang('elasticsearch_app_name'), '...');
+require clearos_app_base('base') . '/controllers/daemon.php';
+
+///////////////////////////////////////////////////////////////////////////////
+// C L A S S
+///////////////////////////////////////////////////////////////////////////////
+
+/**
+ * Elasticsearch daemon controller.
+ *
+ * @category   apps
+ * @package    elasticsearch
+ * @subpackage controllers
+ * @author     eGloo <team@egloo.ca>
+ * @copyright  2016 eGloo
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU General Public License version 3 or later
+ * @link       https://www.egloo.ca/netify/community
+ */
+
+class Server extends Daemon
+{
+    function __construct()
+    {
+        parent::__construct('elasticsearch', 'elasticsearch');
+    }
+}

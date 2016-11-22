@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Elasticsearch controller.
+ * Elasticsearch settings controller.
  *
  * @category   apps
  * @package    elasticsearch
@@ -34,7 +34,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 /**
- * Elasticsearch controller.
+ * Elasticsearch settings controller.
  *
  * @category   apps
  * @package    elasticsearch
@@ -45,26 +45,68 @@
  * @link       https://www.egloo.ca/netify/community
  */
 
-class Elasticsearch extends ClearOS_Controller
+class Settings extends ClearOS_Controller
 {
     /**
-     * Elasticsearch default controller.
+     * Elasticsearch settings controller
      *
      * @return view
      */
 
     function index()
     {
+        $this->_common('view');
+    }
+
+    /**
+     * Edit view.
+     *
+     * @return view
+     */
+
+    function edit()
+    {
+        $this->_common('edit');
+    }
+
+    /**
+     * View view.
+     *
+     * @return view
+     */
+
+    function view()
+    {
+        $this->_common('view');
+    }
+
+    /**
+     * Common view/edit handler.
+     *
+     * @param string $form_type form type
+     *
+     * @return view
+     */
+
+    function _common($form_type)
+    {
         // Load dependencies
         //------------------
 
         $this->lang->load('elasticsearch');
 
+        // Load view data
+        //---------------
+
+        try {
+        } catch (Exception $e) {
+            $this->page->view_exception($e);
+            return;
+        }
+
         // Load views
         //-----------
 
-        $views = array('elasticsearch/server', 'elasticsearch/settings');
-
-        $this->page->view_forms($views, lang('elasticsearch_app_name'));
+        $this->page->view_form('elasticsearch/settings', $data, lang('base_settings'));
     }
 }

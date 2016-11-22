@@ -1,11 +1,11 @@
 <?php
 
 /**
- * Elasticsearch controller.
+ * Elasticsearch view.
  *
  * @category   apps
  * @package    elasticsearch
- * @subpackage controllers
+ * @subpackage view
  * @author     eGloo <team@egloo.ca>
  * @copyright  2016 eGloo
  * @license    http://www.gnu.org/copyleft/gpl.html GNU General Public License version 3 or later
@@ -25,46 +25,18 @@
 // GNU General Public License for more details.
 //
 // You should have received a copy of the GNU General Public License
-// along with this program.  If not, see <http://www.gnu.org/licenses/>.
-//
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.  
+//  
 ///////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////
-// C L A S S
+// Load dependencies
 ///////////////////////////////////////////////////////////////////////////////
 
-/**
- * Elasticsearch controller.
- *
- * @category   apps
- * @package    elasticsearch
- * @subpackage controllers
- * @author     eGloo <team@egloo.ca>
- * @copyright  2016 eGloo
- * @license    http://www.gnu.org/copyleft/gpl.html GNU General Public License version 3 or later
- * @link       https://www.egloo.ca/netify/community
- */
+$this->lang->load('elasticsearch');
 
-class Elasticsearch extends ClearOS_Controller
-{
-    /**
-     * Elasticsearch default controller.
-     *
-     * @return view
-     */
+///////////////////////////////////////////////////////////////////////////////
+// Form
+///////////////////////////////////////////////////////////////////////////////
 
-    function index()
-    {
-        // Load dependencies
-        //------------------
-
-        $this->lang->load('elasticsearch');
-
-        // Load views
-        //-----------
-
-        $views = array('elasticsearch/server', 'elasticsearch/settings');
-
-        $this->page->view_forms($views, lang('elasticsearch_app_name'));
-    }
-}
+echo infobox_highlight(lang('elasticsearch_app_name'), 'Nothing to see hear yet.');
