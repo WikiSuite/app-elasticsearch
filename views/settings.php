@@ -39,4 +39,4 @@ $this->lang->load('elasticsearch');
 // Form
 ///////////////////////////////////////////////////////////////////////////////
 
-echo infobox_highlight(lang('elasticsearch_app_name'), 'Nothing to see hear yet.');
+echo infobox_highlight(lang('elasticsearch_app_name'), 'Nothing to see here yet.');
