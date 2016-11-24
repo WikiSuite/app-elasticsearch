@@ -1,7 +1,7 @@
 
 Name: app-elasticsearch
 Epoch: 1
-Version: 1.0.0
+Version: 1.0.1
 Release: 1%{dist}
 Summary: Elasticsearch
 License: GPLv3
@@ -14,7 +14,7 @@ Requires: %{name}-core = 1:%{version}-%{release}
 Requires: app-base
 
 %description
-Elasticsearch - a description goes here.
+Elasticsearch is a flexible and powerful free / libre / open source, distributed, real-time search and analytics engine. It is super fast, RESTful, based on Apache Lucene.
 
 %package core
 Summary: Elasticsearch - Core
@@ -25,7 +25,7 @@ Requires: elasticsearch
 Requires: java
 
 %description core
-Elasticsearch - a description goes here.
+Elasticsearch is a flexible and powerful free / libre / open source, distributed, real-time search and analytics engine. It is super fast, RESTful, based on Apache Lucene.
 
 This package provides the core API and libraries.
 
