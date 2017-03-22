@@ -1,13 +1,13 @@
 
 Name: app-elasticsearch
 Epoch: 1
-Version: 1.0.1
+Version: 1.0.2
 Release: 1%{dist}
 Summary: Elasticsearch
 License: GPLv3
 Group: ClearOS/Apps
 Packager: eGloo
-Vendor: eGloo
+Vendor: WikiSuite
 Source: %{name}-%{version}.tar.gz
 Buildarch: noarch
 Requires: %{name}-core = 1:%{version}-%{release}
@@ -77,6 +77,7 @@ exit 0
 %files core
 %defattr(-,root,root)
 %exclude /usr/clearos/apps/elasticsearch/packaging
+%exclude /usr/clearos/apps/elasticsearch/unify.json
 %dir /usr/clearos/apps/elasticsearch
 %dir /var/clearos/elasticsearch
 %dir /var/clearos/elasticsearch/backup
