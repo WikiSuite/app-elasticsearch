@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Elasticsearch settings controller.
+ * Elasticsearch policy controller.
  *
  * @category   apps
  * @package    elasticsearch
@@ -29,11 +29,24 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////
+// B O O T S T R A P
+///////////////////////////////////////////////////////////////////////////////
+
+$bootstrap = getenv('CLEAROS_BOOTSTRAP') ? getenv('CLEAROS_BOOTSTRAP') : '/usr/clearos/framework/shared';
+require_once $bootstrap . '/bootstrap.php';
+
+///////////////////////////////////////////////////////////////////////////////
+// D E P E N D E N C I E S
+///////////////////////////////////////////////////////////////////////////////
+
+require clearos_app_base('groups') . '/controllers/groups.php';
+
+///////////////////////////////////////////////////////////////////////////////
 // C L A S S
 ///////////////////////////////////////////////////////////////////////////////
 
 /**
- * Elasticsearch settings controller.
+ * Elasticsearch policy controller.
  *
  * @category   apps
  * @package    elasticsearch
@@ -43,68 +56,14 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU General Public License version 3 or later
  */
 
-class Settings extends ClearOS_Controller
+class Policy extends Groups
 {
     /**
-     * Elasticsearch settings controller
-     *
-     * @return view
+     * Elasticsearch policy constructor.
      */
 
-    function index()
+    function __construct()
     {
-        $this->_common('view');
-    }
-
-    /**
-     * Edit view.
-     *
-     * @return view
-     */
-
-    function edit()
-    {
-        $this->_common('edit');
-    }
-
-    /**
-     * View view.
-     *
-     * @return view
-     */
-
-    function view()
-    {
-        $this->_common('view');
-    }
-
-    /**
-     * Common view/edit handler.
-     *
-     * @param string $form_type form type
-     *
-     * @return view
-     */
-
-    function _common($form_type)
-    {
-        // Load dependencies
-        //------------------
-
-        $this->lang->load('elasticsearch');
-
-        // Load view data
-        //---------------
-
-        try {
-        } catch (Exception $e) {
-            $this->page->view_exception($e);
-            return;
-        }
-
-        // Load views
-        //-----------
-
-        $this->page->view_form('elasticsearch/settings', $data, lang('base_settings'));
+        parent::__construct('elasticsearch', array('elasticsearch_plugin'));
     }
 }

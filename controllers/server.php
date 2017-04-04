@@ -7,9 +7,8 @@
  * @package    elasticsearch
  * @subpackage controllers
  * @author     eGloo <team@egloo.ca>
- * @copyright  2016 eGloo
+ * @copyright  2017 Marc Laporte
  * @license    http://www.gnu.org/copyleft/gpl.html GNU General Public License version 3 or later
- * @link       https://www.egloo.ca/netify/community
  */
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -53,9 +52,8 @@ require clearos_app_base('base') . '/controllers/daemon.php';
  * @package    elasticsearch
  * @subpackage controllers
  * @author     eGloo <team@egloo.ca>
- * @copyright  2016 eGloo
+ * @copyright  2017 Marc Laporte
  * @license    http://www.gnu.org/copyleft/gpl.html GNU General Public License version 3 or later
- * @link       https://www.egloo.ca/netify/community
  */
 
 class Server extends Daemon

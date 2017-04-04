@@ -7,9 +7,8 @@
  * @package    elasticsearch
  * @subpackage controllers
  * @author     eGloo <team@egloo.ca>
- * @copyright  2016 eGloo
+ * @copyright  2017 Marc Laporte
  * @license    http://www.gnu.org/copyleft/gpl.html GNU General Public License version 3 or later
- * @link       https://www.egloo.ca/netify/community
  */
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -40,9 +39,8 @@
  * @package    elasticsearch
  * @subpackage controllers
  * @author     eGloo <team@egloo.ca>
- * @copyright  2016 eGloo
+ * @copyright  2017 Marc Laporte
  * @license    http://www.gnu.org/copyleft/gpl.html GNU General Public License version 3 or later
- * @link       https://www.egloo.ca/netify/community
  */
 
 class Elasticsearch extends ClearOS_Controller
@@ -63,7 +61,7 @@ class Elasticsearch extends ClearOS_Controller
         // Load views
         //-----------
 
-        $views = array('elasticsearch/server', 'elasticsearch/settings');
+        $views = array('elasticsearch/server', 'elasticsearch/settings', 'elasticsearch/policy');
 
         $this->page->view_forms($views, lang('elasticsearch_app_name'));
     }

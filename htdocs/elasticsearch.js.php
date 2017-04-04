@@ -1,11 +1,11 @@
 <?php
 
 /**
- * Elasticsearch view.
+ * Elasticserach ajax helpers.
  *
  * @category   apps
  * @package    elasticsearch
- * @subpackage views
+ * @subpackage javascript
  * @author     eGloo <team@egloo.ca>
  * @copyright  2017 Marc Laporte
  * @license    http://www.gnu.org/copyleft/gpl.html GNU General Public License version 3 or later
@@ -29,33 +29,63 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////
-// Load dependencies
+// B O O T S T R A P
 ///////////////////////////////////////////////////////////////////////////////
 
-$this->lang->load('elasticsearch');
+$bootstrap = getenv('CLEAROS_BOOTSTRAP') ? getenv('CLEAROS_BOOTSTRAP') : '/usr/clearos/framework/shared';
+require_once $bootstrap . '/bootstrap.php';
 
 ///////////////////////////////////////////////////////////////////////////////
-// Show warning if not running
+// T R A N S L A T I O N S
 ///////////////////////////////////////////////////////////////////////////////
 
-echo "<div id='elasticsearch_not_running' style='display:none;'>";
-echo infobox_warning(lang('base_warning'), lang('elasticsearch_management_tool_not_accessible'));
-echo "</div>";
+clearos_load_language('elasticsearch');
 
 ///////////////////////////////////////////////////////////////////////////////
-// Helper if running
+// J A V A S C R I P T
 ///////////////////////////////////////////////////////////////////////////////
 
-echo "<div id='elasticsearch_running' style='display:none;'>";
+header('Content-Type:application/x-javascript');
+?>
 
-$options['buttons']  = array(
-    anchor_custom('https://' . $_SERVER['SERVER_NAME'] . ':81/adminer-elasticsearch', lang('elasticsearch_go_to_management_tool'), 'high', array('target' => '_blank'))
-);
+///////////////////////////////////////////////////////////////////////////
+// M A I N
+///////////////////////////////////////////////////////////////////////////
 
-echo infobox_highlight(
-    lang('elasticsearch_management_tool'),
-    lang('elasticsearch_management_tool_help'),
-    $options
-);
+$(document).ready(function() {
+    $('#elasticsearch_not_running').hide();
+    $('#elasticsearch_running').hide();
 
-echo "</div>";
+    clearosGetElasticsearchStatus();
+});
+
+
+// Functions
+//----------
+
+function clearosGetElasticsearchStatus() {
+    $.ajax({
+        url: '/app/elasticsearch/server/status',
+        method: 'GET',
+        dataType: 'json',
+        success : function(payload) {
+            handleElasticsearchForm(payload);
+            window.setTimeout(clearosGetElasticsearchStatus, 1000);
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            window.setTimeout(clearosGetElasticsearchStatus, 1000);
+        }
+    });
+}
+
+function handleElasticsearchForm(payload) {
+    if (payload.status == 'running') {
+        $('#elasticsearch_running').show();
+        $('#elasticsearch_not_running').hide();
+    } else {
+        $('#elasticsearch_running').hide();
+        $('#elasticsearch_not_running').show();
+    }
+}
+
+// vim: syntax=javascript
