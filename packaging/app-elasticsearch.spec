@@ -1,7 +1,7 @@
 
 Name: app-elasticsearch
 Epoch: 1
-Version: 1.0.4
+Version: 1.0.5
 Release: 1%{dist}
 Summary: Elasticsearch
 License: GPLv3
@@ -21,9 +21,9 @@ Summary: Elasticsearch - Core
 License: LGPLv3
 Group: ClearOS/Libraries
 Requires: app-base-core
-Requires: adminer-elasticsearch
+Requires: adminer-elasticsearch >= 4.3.1
 Requires: app-elasticsearch-plugin-core
-Requires: elasticsearch
+Requires: elasticsearch >= 5.4.0
 Requires: java
 
 %description core

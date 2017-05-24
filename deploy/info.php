@@ -5,7 +5,7 @@
 /////////////////////////////////////////////////////////////////////////////
 
 $app['basename'] = 'elasticsearch';
-$app['version'] = '1.0.4';
+$app['version'] = '1.0.5';
 $app['release'] = '1';
 $app['vendor'] = 'WikiSuite';
 $app['packager'] = 'eGloo';
@@ -34,9 +34,9 @@ $app['controllers']['policy']['title'] = lang('base_app_policy');
 /////////////////////////////////////////////////////////////////////////////
 
 $app['core_requires'] = array(
-    'adminer-elasticsearch',
+    'adminer-elasticsearch >= 4.3.1',
     'app-elasticsearch-plugin-core',
-    'elasticsearch',
+    'elasticsearch >= 5.4.0',
     'java',
 );
 
