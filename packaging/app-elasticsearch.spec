@@ -1,7 +1,7 @@
 
 Name: app-elasticsearch
 Epoch: 1
-Version: 1.0.5
+Version: 1.2.0
 Release: 1%{dist}
 Summary: Elasticsearch
 License: GPLv3
