@@ -1,7 +1,7 @@
 
 Name: app-elasticsearch
 Epoch: 1
-Version: 1.2.0
+Version: 1.2.1
 Release: 1%{dist}
 Summary: Elasticsearch
 License: GPLv3
@@ -85,4 +85,5 @@ exit 0
 %dir /var/clearos/elasticsearch/backup
 /usr/clearos/apps/elasticsearch/deploy
 /usr/clearos/apps/elasticsearch/language
+/usr/clearos/apps/elasticsearch/libraries
 /var/clearos/base/daemon/elasticsearch.php
