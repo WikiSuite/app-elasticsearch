@@ -64,9 +64,10 @@ class Elasticsearch extends ClearOS_Controller
         //---------------
 
         try {
-            $data['required'] = $this->elasticsearch->get_memory_setting();
-            $data['available'] = $this->stats->get_mem_size();
             // Allow a 5% buffer on memory limit
+            // Add at least 1 GB beyond what's required for Elasticsearch
+            $data['required'] = $this->elasticsearch->get_memory_setting() + 1;
+            $data['available'] = $this->stats->get_mem_size();
             $needs_ram = ($data['available'] < (0.95) * $data['required']) ? TRUE : FALSE;
         } catch (Exception $e) {
             $this->page->view_exception($e);
