@@ -6,3 +6,7 @@ $lang['elasticsearch_management_tool_not_accessible'] = 'The Elasticsearch manag
 $lang['elasticsearch_management_tool'] = 'Elasticsearch Web Interface';
 $lang['elasticsearch_management_tool_help'] = 'Follow the link to access the Elasticsearch web interface.  Only users with access to Elasticsearch will be granted access.';
 $lang['elasticsearch_go_to_management_tool'] = 'Go To Elasticsearch';
+$lang['elasticsearch_memory_check'] = 'Memory Check';
+$lang['elasticsearch_not_enough_memory'] = 'Sorry, your system has insufficient memory to run this app.';
+$lang['elasticsearch_available'] = 'Available';
+$lang['elasticsearch_required'] = 'Required';

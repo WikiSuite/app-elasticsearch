@@ -56,13 +56,31 @@ class Elasticsearch extends ClearOS_Controller
         // Load dependencies
         //------------------
 
+        $this->load->library('base/Stats');
+        $this->load->library('elasticsearch/Elasticsearch');
         $this->lang->load('elasticsearch');
+
+        // Load view data
+        //---------------
+
+        try {
+            $data['required'] = $this->elasticsearch->get_memory_setting();
+            $data['available'] = $this->stats->get_mem_size();
+            // Allow a 5% buffer on memory limit
+            $needs_ram = ($data['available'] < (0.95) * $data['required']) ? TRUE : FALSE;
+        } catch (Exception $e) {
+            $this->page->view_exception($e);
+            return;
+        }
 
         // Load views
         //-----------
 
-        $views = array('elasticsearch/server', 'elasticsearch/settings', 'elasticsearch/policy');
-
-        $this->page->view_forms($views, lang('elasticsearch_app_name'));
+        if ($needs_ram) {
+            $this->page->view_form('elasticsearch/memory', $data, lang('base_memory'));
+        } else {
+            $views = array('elasticsearch/server', 'elasticsearch/settings', 'elasticsearch/policy');
+            $this->page->view_forms($views, lang('elasticsearch_app_name'));
+        }
     }
 }
