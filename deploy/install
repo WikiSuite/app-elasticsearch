@@ -17,5 +17,5 @@ cp /usr/clearos/apps/elasticsearch/deploy/elasticsearch.yml /etc/elasticsearch/e
 #-------------------------------------------------
 
 systemctl daemon-reload >/dev/null 2>&1
-systemctl enable elasticsearch.service >/dev/null 2>&1
-systemctl start elasticsearch.service >/dev/null 2>&1
+systemctl disable elasticsearch.service >/dev/null 2>&1
+systemctl stop elasticsearch.service >/dev/null 2>&1
