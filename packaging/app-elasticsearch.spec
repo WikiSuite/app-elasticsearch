@@ -1,11 +1,11 @@
 
 Name: app-elasticsearch
 Epoch: 1
-Version: 1.2.3
+Version: 1.2.4
 Release: 1%{dist}
 Summary: Elasticsearch
 License: GPLv3
-Group: ClearOS/Apps
+Group: Applications/Apps
 Packager: eGloo
 Vendor: WikiSuite
 Source: %{name}-%{version}.tar.gz
@@ -17,9 +17,9 @@ Requires: app-base
 Elasticsearch is a flexible and powerful free / libre / open source, distributed, real-time search and analytics engine. It is super fast, RESTful, based on Apache Lucene.
 
 %package core
-Summary: Elasticsearch - Core
+Summary: Elasticsearch - API
 License: LGPLv3
-Group: ClearOS/Libraries
+Group: Applications/API
 Requires: app-base-core
 Requires: adminer-elasticsearch >= 4.3.1
 Requires: app-elasticsearch-plugin-core
